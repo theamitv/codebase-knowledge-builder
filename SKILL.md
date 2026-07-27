@@ -1,26 +1,30 @@
 ---
 name: codebase-knowledge-builder
-description: Repository knowledge builder — architecture, code flow, dependency graph, onboarding, technical debt analysis. Use when exploring a new codebase, generating documentation, or onboarding developers.
-user-invocable: true
-allowed-tools: Read, Write, Bash(git, find, grep, cloc)
+description: "Repository knowledge builder — architecture, code flow, dependency graph, onboarding, technical debt analysis. Use when exploring a new codebase, generating documentation, or onboarding developers. Triggers on: 'explain this repository', 'explain the architecture', 'how does authentication work', 'trace this request', 'find duplicate code', 'find dead code', 'generate onboarding guide', 'generate architecture documentation', 'generate dependency graph', 'explain deployment', 'generate README', 'generate developer guide'."
 ---
 
 # Enterprise Codebase Knowledge Builder
 
 Ingest and understand an entire software repository, build a comprehensive internal knowledge model, and answer deep technical questions about architecture, business logic, dependencies, workflows, APIs, databases, deployments, and development practices.
 
-## When to Use
+## Quick Start
 
-- `Explain this repository` / `Explain the architecture`
-- `How does authentication work?`
-- `Trace this request` / `Trace this event`
-- `Find duplicate code` / `Find dead code`
-- `Find unused APIs` / `Find configuration`
-- `Generate onboarding guide` / `Generate architecture documentation`
-- `Generate dependency graph` / `Generate Mermaid diagrams`
-- `Explain deployment` / `Explain Kubernetes setup`
-- `Explain caching` / `Explain Redis usage`
-- `Generate README` / `Generate developer guide`
+When the user says "explain this repository" or points to a codebase, do NOT jump into answering. First ingest the repository:
+
+1. Run `scripts/analyze.sh <path>` to get repository stats
+2. Read key configuration files (package.json, tsconfig, Dockerfile, CI configs)
+3. Understand the folder structure and module organization
+4. Detect the technology stack
+5. Then answer questions based on evidence
+
+## Core Philosophy: Evidence-Based Answers
+
+```
+Traditional:  Guess → Answer → (might be wrong)
+Knowledge Builder:  Ingest → Knowledge Graph → Evidence → Answer → Confidence
+```
+
+Always answer using repository evidence first. Never invent code paths or undocumented behavior. When evidence is incomplete, clearly state assumptions and confidence.
 
 ## Repository Ingestion
 
@@ -96,11 +100,27 @@ Always generate:
 
 ## Quality Gates
 
-- Repository conclusions are evidence-based
+- Repository conclusions must be evidence-based
 - Assumptions are explicitly marked
 - Unknown areas identified rather than guessed
 - Architecture explanations consistent across modules
 - Documentation suitable for both new and senior developers
+
+## Non-Negotiables
+
+1. **Never invent code paths.** If you haven't seen it in the code, don't claim it exists.
+2. **Always cite evidence.** Reference specific files and line numbers.
+3. **Mark uncertainty.** If you're inferring, say so.
+4. **Think like a senior engineer.** You've maintained this codebase for years.
+5. **Progressive disclosure.** Start with the big picture, then dive deeper on request.
+
+## Reference Files
+
+Load on demand:
+
+| File | When to Load | Contents |
+|------|-------------|----------|
+| `references/architecture-patterns.md` | During architecture analysis | Architecture pattern descriptions and detection |
 
 ## Extension Hooks
 
