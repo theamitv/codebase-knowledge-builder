@@ -1,49 +1,19 @@
-# Enterprise Codebase Knowledge Builder
+# This skill has moved
 
-> Repository knowledge builder — architecture, code flow, dependency graph, onboarding, technical debt analysis.
+This skill is now part of the [theamitv/skills](https://github.com/theamitv/skills) monorepo where all skills are maintained together.
 
-Ingest and understand an entire software repository, build a comprehensive internal knowledge model, and answer deep technical questions about architecture, business logic, dependencies, workflows, APIs, databases, deployments, and development practices.
-
-## What It Does
-
-- **Full Repository Ingestion** — Source code, config, infrastructure, tests, docs, CI/CD, IaC
-- **Knowledge Graph** — Modules, services, classes, functions, routes, events, queues, database tables, external services
-- **Technology Detection** — Auto-detect languages, frameworks, libraries, databases, cloud providers
-- **Code Flow Analysis** — Trace HTTP requests, events, database operations, background jobs
-- **Technical Debt Analysis** — God classes, dead code, circular dependencies, security risks
-- **Developer Onboarding** — Structured 3-week onboarding plan
-
-## Install
+## Install from the monorepo
 
 ```bash
-npx skills add theamitv/codebase-knowledge-builder
+npx skills add theamitv/skills --skill codebase-knowledge-builder
 ```
 
-## Usage
+## Why the move?
 
-```
-Explain this repository
-Explain the architecture
-How does authentication work?
-Trace this request
-Find duplicate code
-Generate onboarding guide
-Generate dependency graph
-```
+- **Single source of truth** — All skills updated together
+- **Consistent quality** — Same review, security, and structure standards
+- **Easier discovery** — Find all skills in one place
 
-## File Structure
+---
 
-```
-codebase-knowledge-builder/
-├── SKILL.md
-├── references/
-│   └── architecture-patterns.md
-├── examples/
-│   └── usage.md
-└── scripts/
-    └── analyze.sh
-```
-
-## License
-
-MIT
+*This repo is kept for backward compatibility. New updates will only be published to the monorepo.*
